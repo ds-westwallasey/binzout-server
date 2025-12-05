@@ -1,4 +1,4 @@
-name: Test and push to main bloomin branch
+name: Test and push to main branch
 
 on:
   pull_request:
