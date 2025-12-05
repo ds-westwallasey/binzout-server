@@ -1,0 +1,32 @@
+name: Test and push to main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-merge:
+    name: Run tests and merge to main
+    runs-on: ubuntu-latest
+
+    steps:
+      # grab repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Dart
+        uses: dart0lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Get dependencies
+        run: dart pub Get
+
+      - name: Run mock tests
+        run: dart test/mock_endpoint_tests.dart
+
+      - name: Run integration tests
+        run: test/integration_test.dart
