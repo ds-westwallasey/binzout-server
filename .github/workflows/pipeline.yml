@@ -1,4 +1,4 @@
-name: Test and push to main branch
+name: Test and push to main
 
 on:
   pull_request:
