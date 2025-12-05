@@ -23,7 +23,7 @@ jobs:
           sdk: stable
 
       - name: Get dependencies
-        run: dart pub Get
+        run: dart pub get
 
       - name: Run mock tests
         run: dart test/mock_endpoint_tests.dart
