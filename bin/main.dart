@@ -3,4 +3,6 @@ import 'package:main/server/server.dart';
 
 void main() async {
   await generateServerConnection(productionHandler, 8054, "0.0.0.0");
+
+  print("server is actually running");
 }
