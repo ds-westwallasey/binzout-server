@@ -2,5 +2,5 @@
 import 'package:main/server/server.dart';
 
 void main() async {
-  await generateServerConnection(productionHandler, 8054, "localhost");
+  await generateServerConnection(productionHandler, 8054, "0.0.0.0");
 }
