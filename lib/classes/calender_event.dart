@@ -11,9 +11,9 @@ class CalenderEvent {
 
   factory CalenderEvent.fromJson(Map<String, dynamic> json) {
     return CalenderEvent(
-      json['date'] as String,
-      json['type'] as int,
-      json['calendarNumber'] as int,
+      json['Date'] as String,
+      json['Type'] as int,
+      json['CalendarNumber'] as int,
     );
   }
 }
