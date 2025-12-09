@@ -1,13 +1,13 @@
 import 'dart:convert';
-import 'package:main/server/server.dart';
+import 'package:main/classes/production_handler.dart';
 import 'package:http/http.dart' as http;
+import 'package:main/utilities/utilities.dart';
 import 'package:test/test.dart';
 
 void main() async {
   final server = await generateServerConnection(
-    productionHandler,
-    0,
-    "localhost",
+    ProductionHandler().handler,
+    "0.0.0.0",
   );
   final port = server.port;
 
@@ -17,7 +17,9 @@ void main() async {
       test('200: api/healthcheck', () async {
         final url = Uri.parse('http://localhost:$port/api/healthcheck');
         final response = await http.get(url);
-        expect(response.body, "Hello from working server!");
+
+        expect(response.statusCode, equals(200));
+        expect(response.body, equals("Hello from working server!"));
       }),
 
       test('200: api/bins/<postcode> ', () async {
@@ -28,7 +30,8 @@ void main() async {
         final response = await http.get(url);
         final List<dynamic> binSchedule = jsonDecode(response.body);
 
-        expect(binSchedule.length, 3);
+        expect(response.statusCode, equals(200));
+        expect(binSchedule.length, equals(3));
         expect(
           binSchedule,
           everyElement(

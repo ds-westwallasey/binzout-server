@@ -25,8 +25,11 @@ jobs:
       - name: Get dependencies
         run: dart pub get
 
-      - name: Run mock tests
-        run: dart test test/mock_endpoint_tests.dart
+      - name: Run utility tests
+        run: dart test test/utilities_test.dart
 
-      - name: Run integration tests
+      - name: Run mock tests tests
+        run: dart test test/mock_handler_tests.dart
+
+      - name: Run end to end tests
         run: dart test test/integration_test.dart
